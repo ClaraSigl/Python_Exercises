@@ -3,7 +3,7 @@ Created: 05/Feb/2023
 Author: Clara Sigl
 
 This script contains the answers for a number of exercises concerning simple data types from the course BINP16 (Programming in Python).
-BINP16 is thaugt at Lund University, and the exercies were obtained from autumn 2022.
+BINP16 is thaught at Lund University, and the exercies were obtained from autumn 2022.
 
 '''
 import random
