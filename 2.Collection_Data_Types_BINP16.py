@@ -1,16 +1,12 @@
 '''
 Created: 12/Mar/2023
-Last Updated: 12/Mar/2023
+Last Updated: 13/Mar/2023
 Author: Clara Sigl
 
 This script contains the answers for a number of exercises concerning collection data types from the course BINP16 (Programming in Python).
 BINP16 is thaugt at Lund University, and the exercies were obtained from autumn 2022.
 Note that the exercises have been modified somewhat to fit as standalone exercises (and not as a continuation of a previous exercise).
 
-'''
-
-
-'''
 Exercise: Create a list of all codons using the string "ACGT".
 Codon: https://en.wikipedia.org/wiki/DNA_and_RNA_codon_tables
 '''
@@ -49,3 +45,38 @@ def aggregate_dict(dict_1, dict_2):
         return new_dict
     except:
         return "Please make sure that both dictionaries have one digit as value per key."
+
+"""
+Exercise: Create a tab-separated text file containing the following two columns:
+ProteinID ProteinSeq
+prot1 AGSATGDASD
+prot4 ASLWASLD
+prot9 PPASDSADSAD
+prot2 XXSWKJXS
+prot8 PSOASSADASD
+
+Then iterate through the file, printing only the protein IDs who's peptides has a tryptophane (W) in them.
+"""
+
+def create_tab_separated_file():
+    tab_file = open("tab_file.txt", "w")
+    tab_dict = {"ProteinID" : "ProteinSeq",
+                "prot1" : "AGSATGDASD",
+                "prot4" : "ASLWASLD",
+                "prot9" : "PPASDSADSAD",
+                "prot2" : "XXSWKJXS",
+                "prot8" : "PSOASSADASD"}
+    for proteinID in tab_dict:
+        tab_file.write("{}\t{}\n".format(proteinID, tab_dict[proteinID])) #Write the key, a tab, the value of the key, then a newline.
+    tab_file.close()
+
+def print_W_IDs(inp_file):
+    try:
+        tab_file = open(inp_file)
+        for line in tab_file:
+            line = line.split("\t") #Separate the string (current line) into a list, separated at the tab.
+            if "W" in line[1]: #If the protein sequence has a tryptophane.
+                print(line[0])
+        tab_file.close()
+    except:
+        return "Please make sure that the input is a tab-separated text file."
